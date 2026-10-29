@@ -13,7 +13,9 @@ whatever its sandbox lets it touch — so the sandbox *is* the security boundary
 
 | Path | What it is |
 |---|---|
-| [`slides/`](slides/) | Marp deck: containers vs VMs, the shared-kernel tradeoff, isolation runtimes (gVisor/Kata/Firecracker), warm pools, and the `Sandbox` CRD. Builds to HTML/PDF. |
+| [`slides/`](slides/) | The main (200-level) Marp deck, `slides.md`: containers vs VMs, the shared-kernel tradeoff, isolation runtimes (gVisor/Kata/Firecracker), warm pools, and the `Sandbox` CRD. Builds to HTML/PDF. |
+| [`slides/slides-100.md`](slides/slides-100.md) | Introductory deck for an audience with no Linux or Kubernetes background. Each core idea (agents, sandboxes, kernels, Kubernetes, hardening, isolation runtimes, warm pools) has a plain-language slide with a diagram, then a "100 to 300" slide that goes deeper. It ends with the infographic, the lab commands, and a four-slide glossary. |
+| [`infographic/`](infographic/) | The lecture and lab on one page, as SVG (source) and PNG. |
 | [`lab/`](lab/) | Hands-on lab: a `kind` cluster where the **same** agent image runs as an unsecured **plain Pod** (defaults) vs a hardened **`Sandbox`** (also offered as a reusable `SandboxTemplate`). The unsecured one is breached; the secured ones contain every attack. |
 
 ## The arc
@@ -39,9 +41,11 @@ Slides:
 
 ```bash
 cd slides
-npm run preview      # live preview in the browser
+npm run preview      # live preview of both decks in the browser
 npm run build:html   # -> slides/slides.html
 npm run build:pdf    # -> slides/slides.pdf
+npm run build:html:100   # introductory deck -> slides/slides-100.html
+npm run build:pdf:100    # introductory deck -> slides/slides-100.pdf
 ```
 
 Lab:

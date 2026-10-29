@@ -1,0 +1,207 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1960" viewBox="0 0 1200 1960" font-family="'Segoe UI', Roboto, Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <title>Sandboxing Agentic AI at a glance</title>
+  <desc>One-page summary of the Sandboxing Agentic AI lecture and lab: why agents need a sandbox, containers compared with virtual machines, the lab results for a plain Pod and a hardened Sandbox, the ladder of isolation runtimes, the four layers of defense, and warm pools.</desc>
+
+  <defs>
+    <style>
+      .title { font-size: 44px; font-weight: 700; fill: #0f766e; }
+      .sub { font-size: 19px; fill: #52615f; }
+      .h2 { font-size: 27px; font-weight: 700; fill: #0f766e; }
+      .h3 { font-size: 20px; font-weight: 700; fill: #1d2b2a; }
+      .body { font-size: 17px; fill: #1d2b2a; }
+      .muted { font-size: 15px; fill: #52615f; }
+      .label { font-size: 14px; font-weight: 600; fill: #52615f; }
+      .on-teal { font-size: 17px; font-weight: 700; fill: #fbf8ee; }
+      .on-teal-sub { font-size: 14px; fill: #cde7e3; }
+      .on-yellow { font-size: 17px; font-weight: 700; fill: #10302e; }
+      .on-yellow-sub { font-size: 14px; fill: #10302e; }
+      .th { font-size: 16px; font-weight: 700; fill: #1d2b2a; }
+      .td { font-size: 16px; fill: #1d2b2a; }
+      .breach { font-size: 16px; font-weight: 700; fill: #b42318; }
+      .contained { font-size: 16px; font-weight: 700; fill: #0f766e; }
+      .mono { font-family: 'DejaVu Sans Mono', 'Liberation Mono', Menlo, monospace; font-size: 15px; fill: #1d2b2a; }
+    </style>
+    <marker id="arw" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#7c8c8a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="1960" fill="#fffdf5"/>
+
+  <!-- Header -->
+  <rect x="60" y="40" width="6" height="96" fill="#f5c518"/>
+  <text x="86" y="88" class="title">Sandboxing Agentic AI at a glance</text>
+  <text x="86" y="122" class="sub">Lecture and lab summary · Kubernetes + kind + the agent-sandbox CRD · 100 level</text>
+
+  <rect x="60" y="160" width="1080" height="56" rx="6" fill="#fff6cc"/>
+  <rect x="60" y="160" width="4" height="56" fill="#f5c518"/>
+  <text x="80" y="195" class="body"><tspan font-weight="700">The idea:</tspan> an agent runs code that nobody reviewed, so the sandbox is the security boundary.</text>
+
+  <!-- 1. Why -->
+  <text x="60" y="270" class="h2">Why agents need a sandbox</text>
+  <rect x="60" y="282" width="1080" height="2" fill="#f5c518"/>
+
+  <rect x="60" y="304" width="345" height="142" rx="8" fill="#ffffff" stroke="#e4e0d0"/>
+  <rect x="60" y="304" width="345" height="4" fill="#0f766e"/>
+  <text x="78" y="340" class="h3">Untrusted code</text>
+  <text x="78" y="368" class="body">The agent writes code and runs</text>
+  <text x="78" y="391" class="body">it, usually before any person</text>
+  <text x="78" y="414" class="body">reads it.</text>
+
+  <rect x="427" y="304" width="345" height="142" rx="8" fill="#ffffff" stroke="#e4e0d0"/>
+  <rect x="427" y="304" width="345" height="4" fill="#0f766e"/>
+  <text x="445" y="340" class="h3">Prompt injection</text>
+  <text x="445" y="368" class="body">Hidden instructions in a web page</text>
+  <text x="445" y="391" class="body">or file can steer that code toward</text>
+  <text x="445" y="414" class="body">an attacker's goal.</text>
+
+  <rect x="795" y="304" width="345" height="142" rx="8" fill="#ffffff" stroke="#e4e0d0"/>
+  <rect x="795" y="304" width="345" height="4" fill="#f5c518"/>
+  <text x="813" y="340" class="h3">Volume and sharing</text>
+  <text x="813" y="368" class="body">Platforms start thousands of</text>
+  <text x="813" y="391" class="body">short-lived boxes, often for many</text>
+  <text x="813" y="414" class="body">customers on the same machines.</text>
+
+  <!-- 2. Containers vs VMs -->
+  <text x="60" y="502" class="h2">Containers and virtual machines</text>
+  <rect x="60" y="514" width="1080" height="2" fill="#f5c518"/>
+
+  <rect x="60" y="536" width="1080" height="300" rx="10" fill="#ffffff" stroke="#e4e0d0"/>
+
+  <text x="300" y="574" class="h3" text-anchor="middle">Container: apartments in one building</text>
+  <rect x="90" y="594" width="130" height="58" rx="10" fill="#0f766e"/>
+  <text x="155" y="629" class="on-teal" text-anchor="middle">App A</text>
+  <rect x="235" y="594" width="130" height="58" rx="10" fill="#0f766e"/>
+  <text x="300" y="629" class="on-teal" text-anchor="middle">App B</text>
+  <rect x="380" y="594" width="130" height="58" rx="10" fill="#0f766e"/>
+  <text x="445" y="629" class="on-teal" text-anchor="middle">Agent</text>
+  <rect x="90" y="664" width="420" height="52" rx="10" fill="#f5c518"/>
+  <text x="300" y="696" class="on-yellow" text-anchor="middle">One shared host kernel</text>
+  <text x="90" y="752" class="body">Starts in milliseconds, megabytes in size,</text>
+  <text x="90" y="775" class="body">hundreds per machine.</text>
+  <text x="90" y="806" class="body" font-weight="700">One kernel bug or misconfiguration can reach every app.</text>
+
+  <line x1="600" y1="566" x2="600" y2="806" stroke="#e4e0d0" stroke-width="2"/>
+
+  <text x="870" y="574" class="h3" text-anchor="middle">Virtual machine: separate houses</text>
+  <rect x="640" y="594" width="220" height="30" rx="8" fill="#0f766e"/>
+  <text x="750" y="615" class="on-teal-sub" text-anchor="middle" font-weight="700" fill="#fbf8ee">App A</text>
+  <rect x="640" y="628" width="220" height="30" rx="8" fill="#e0f2ef" stroke="#0f766e"/>
+  <text x="750" y="649" class="td" text-anchor="middle" font-size="14">guest kernel A</text>
+  <rect x="880" y="594" width="220" height="30" rx="8" fill="#0f766e"/>
+  <text x="990" y="615" class="on-teal-sub" text-anchor="middle" font-weight="700" fill="#fbf8ee">Agent</text>
+  <rect x="880" y="628" width="220" height="30" rx="8" fill="#e0f2ef" stroke="#0f766e"/>
+  <text x="990" y="649" class="td" text-anchor="middle" font-size="14">guest kernel B</text>
+  <rect x="640" y="664" width="460" height="24" rx="8" fill="#f5c518"/>
+  <text x="870" y="681" class="on-yellow-sub" text-anchor="middle" font-weight="700">hypervisor: walls enforced by the hardware</text>
+  <rect x="640" y="692" width="460" height="24" rx="8" fill="#f3f1e8" stroke="#e4e0d0"/>
+  <text x="870" y="709" class="muted" text-anchor="middle" font-size="14">host kernel</text>
+  <text x="640" y="752" class="body">Starts in seconds, gigabytes in size,</text>
+  <text x="640" y="775" class="body">tens per machine.</text>
+  <text x="640" y="806" class="body" font-weight="700">Each guest brings its own kernel.</text>
+
+  <!-- 3. Lab results -->
+  <text x="60" y="892" class="h2">The lab: same agent, two boxes</text>
+  <rect x="60" y="904" width="1080" height="2" fill="#f5c518"/>
+
+  <rect x="60" y="926" width="1080" height="44" fill="#e0f2ef"/>
+  <rect x="60" y="968" width="1080" height="2" fill="#f5c518"/>
+  <text x="76" y="954" class="th">The agent tries to</text>
+  <text x="470" y="954" class="th">Plain Pod, defaults</text>
+  <text x="680" y="954" class="th">Hardened Sandbox, and the control that stopped it</text>
+
+  <rect x="60" y="970" width="1080" height="46" fill="#ffffff"/>
+  <text x="76" y="999" class="td">steal secrets with the cluster API token</text>
+  <text x="470" y="999" class="breach">BREACH</text>
+  <text x="680" y="999" class="contained">CONTAINED</text>
+  <text x="790" y="999" class="td">no token mounted, zero RBAC</text>
+
+  <rect x="60" y="1016" width="1080" height="46" fill="#faf8ef"/>
+  <text x="76" y="1045" class="td">read the node's files (cluster CA key)</text>
+  <text x="470" y="1045" class="breach">BREACH</text>
+  <text x="680" y="1045" class="contained">CONTAINED</text>
+  <text x="790" y="1045" class="td">no hostPath mount</text>
+
+  <rect x="60" y="1062" width="1080" height="46" fill="#ffffff"/>
+  <text x="76" y="1091" class="td">see every process on the node</text>
+  <text x="470" y="1091" class="breach">BREACH</text>
+  <text x="680" y="1091" class="contained">CONTAINED</text>
+  <text x="790" y="1091" class="td">own PID namespace (no hostPID)</text>
+
+  <rect x="60" y="1108" width="1080" height="46" fill="#faf8ef"/>
+  <text x="76" y="1137" class="td">run as root and rewrite its own files</text>
+  <text x="470" y="1137" class="breach">BREACH</text>
+  <text x="680" y="1137" class="contained">CONTAINED</text>
+  <text x="790" y="1137" class="td">uid 65532, read-only rootfs, all caps dropped</text>
+
+  <rect x="60" y="1154" width="1080" height="46" fill="#ffffff"/>
+  <text x="76" y="1183" class="td">reach the API server or metadata service</text>
+  <text x="470" y="1183" class="breach">open egress</text>
+  <text x="680" y="1183" class="contained">CONTAINED</text>
+  <text x="790" y="1183" class="td">deny-all egress NetworkPolicy (DNS only)</text>
+  <rect x="60" y="1200" width="1080" height="1" fill="#e4e0d0"/>
+
+  <text x="76" y="1230" class="muted">Both boxes run the same image and the same attack script. Kubernetes defaults leave every one of these paths open.</text>
+
+  <!-- 4. Ladder -->
+  <text x="60" y="1290" class="h2">A ladder of isolation</text>
+  <rect x="60" y="1302" width="1080" height="2" fill="#f5c518"/>
+
+  <rect x="60" y="1446" width="255" height="80" rx="12" fill="#e0f2ef" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="187" y="1478" class="h3" text-anchor="middle" font-size="18">Plain runc</text>
+  <text x="187" y="1504" class="muted" text-anchor="middle">shared kernel · ~ms</text>
+
+  <rect x="335" y="1404" width="255" height="122" rx="12" fill="#e0f2ef" stroke="#0f766e" stroke-width="1.5"/>
+  <text x="462" y="1440" class="h3" text-anchor="middle" font-size="18">K8s hardening</text>
+  <text x="462" y="1466" class="muted" text-anchor="middle">shared kernel, trimmed · ~ms</text>
+  <text x="462" y="1496" class="label" text-anchor="middle" fill="#0f766e">always do this</text>
+
+  <rect x="610" y="1362" width="255" height="164" rx="12" fill="#f5c518"/>
+  <text x="737" y="1398" class="on-yellow" text-anchor="middle" font-size="18">gVisor (runsc)</text>
+  <text x="737" y="1426" class="on-yellow-sub" text-anchor="middle">userspace kernel · ~0.5s</text>
+  <text x="737" y="1450" class="on-yellow-sub" text-anchor="middle">no KVM needed</text>
+  <text x="737" y="1490" class="on-yellow-sub" text-anchor="middle" font-weight="700">good default for agent code</text>
+
+  <rect x="885" y="1320" width="255" height="206" rx="12" fill="#0f766e"/>
+  <text x="1012" y="1358" class="on-teal" text-anchor="middle" font-size="18">Kata / Firecracker</text>
+  <text x="1012" y="1386" class="on-teal-sub" text-anchor="middle">microVM per sandbox</text>
+  <text x="1012" y="1410" class="on-teal-sub" text-anchor="middle">own guest kernel · ~seconds</text>
+  <text x="1012" y="1434" class="on-teal-sub" text-anchor="middle">needs /dev/kvm</text>
+  <text x="1012" y="1490" class="on-teal-sub" text-anchor="middle" font-weight="700" fill="#fbf8ee">hostile or multi-tenant code</text>
+
+  <line x1="70" y1="1552" x2="1128" y2="1552" stroke="#7c8c8a" stroke-width="2" marker-end="url(#arw)"/>
+  <text x="70" y="1578" class="label">faster start, weaker walls</text>
+  <text x="1130" y="1578" class="label" text-anchor="end">stronger walls, slower start · one field: runtimeClassName</text>
+
+  <!-- 5. Layers + warm pools -->
+  <text x="60" y="1636" class="h2">Layer the defenses, then hide the start-up cost</text>
+  <rect x="60" y="1648" width="1080" height="2" fill="#f5c518"/>
+
+  <rect x="60" y="1670" width="525" height="176" rx="8" fill="#ffffff" stroke="#e4e0d0"/>
+  <rect x="60" y="1670" width="525" height="4" fill="#0f766e"/>
+  <text x="78" y="1706" class="h3">Four layers</text>
+  <text x="78" y="1736" class="body"><tspan font-weight="700">Identity:</tspan> no token automount, least RBAC</text>
+  <text x="78" y="1762" class="body"><tspan font-weight="700">Workload:</tspan> non-root, caps dropped, seccomp</text>
+  <text x="78" y="1788" class="body"><tspan font-weight="700">Network:</tspan> default-deny egress</text>
+  <text x="78" y="1814" class="body"><tspan font-weight="700">Runtime:</tspan> gVisor or Kata via RuntimeClass</text>
+
+  <rect x="615" y="1670" width="525" height="176" rx="8" fill="#ffffff" stroke="#e4e0d0"/>
+  <rect x="615" y="1670" width="525" height="4" fill="#f5c518"/>
+  <text x="633" y="1706" class="h3">Warm pools</text>
+  <rect x="633" y="1724" width="140" height="44" rx="10" fill="#0f766e"/>
+  <text x="703" y="1752" class="on-teal-sub" text-anchor="middle" font-weight="700" fill="#fbf8ee">Template</text>
+  <rect x="801" y="1724" width="140" height="44" rx="10" fill="#0f766e"/>
+  <text x="871" y="1752" class="on-teal-sub" text-anchor="middle" font-weight="700" fill="#fbf8ee">WarmPool</text>
+  <rect x="969" y="1724" width="140" height="44" rx="10" fill="#f5c518"/>
+  <text x="1039" y="1752" class="on-yellow-sub" text-anchor="middle" font-weight="700">Claim</text>
+  <line x1="775" y1="1746" x2="797" y2="1746" stroke="#7c8c8a" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="943" y1="1746" x2="965" y2="1746" stroke="#7c8c8a" stroke-width="2" marker-end="url(#arw)"/>
+  <text x="633" y="1800" class="body">The pool starts sandboxes ahead of time. A claim</text>
+  <text x="633" y="1824" class="body">gets one in under 2s instead of 10 to 30s.</text>
+
+  <!-- Footer -->
+  <rect x="60" y="1874" width="1080" height="1" fill="#e4e0d0"/>
+  <text x="60" y="1904" class="label">Run the lab</text>
+  <text x="160" y="1904" class="mono">cd lab &amp;&amp; ./scripts/01-up.sh &amp;&amp; ./scripts/demo.sh</text>
+  <text x="60" y="1932" class="muted">Lab and slides: github.com/omrishiv/agent-sandbox · Sandbox CRD: github.com/kubernetes-sigs/agent-sandbox · gvisor.dev · katacontainers.io</text>
+</svg>

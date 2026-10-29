@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <title>Containers are apartments, VMs are houses</title>
+
+  <!-- Apartment building -->
+  <text x="225" y="28" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Containers: apartments in one building</text>
+  <polygon points="80,70 225,45 370,70" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="80" y="70" width="290" height="190" fill="#ffffff" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="95" y="85" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="135" y="115" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App A</text>
+  <rect x="185" y="85" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="225" y="115" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App B</text>
+  <rect x="275" y="85" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="315" y="115" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App C</text>
+  <rect x="95" y="150" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="135" y="180" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App D</text>
+  <rect x="185" y="150" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="225" y="180" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App E</text>
+  <rect x="275" y="150" width="80" height="50" rx="4" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="315" y="180" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">Agent</text>
+  <rect x="60" y="260" width="330" height="40" fill="#b91c1c"/>
+  <text x="225" y="286" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">ONE shared foundation (kernel)</text>
+  <text x="225" y="328" font-size="14" fill="#374151" text-anchor="middle">fast and cheap: milliseconds, hundreds per machine</text>
+  <text x="225" y="349" font-size="14" font-weight="bold" fill="#b91c1c" text-anchor="middle">a crack in the foundation reaches every flat</text>
+
+  <!-- Houses -->
+  <text x="690" y="28" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Virtual machines: separate houses</text>
+  <polygon points="520,120 590,75 660,120" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="530" y="120" width="120" height="100" fill="#ffffff" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="550" y="140" width="80" height="50" rx="4" fill="#eff6ff" stroke="#1e40af"/>
+  <text x="590" y="170" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">App A</text>
+  <rect x="520" y="220" width="140" height="40" fill="#15803d"/>
+  <text x="590" y="245" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">own kernel</text>
+
+  <polygon points="720,120 790,75 860,120" fill="#e5e7eb" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="730" y="120" width="120" height="100" fill="#ffffff" stroke="#6b7280" stroke-width="1.5"/>
+  <rect x="750" y="140" width="80" height="50" rx="4" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="790" y="170" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">Agent</text>
+  <rect x="720" y="220" width="140" height="40" fill="#15803d"/>
+  <text x="790" y="245" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">own kernel</text>
+
+  <rect x="510" y="260" width="360" height="22" fill="#6b21a8"/>
+  <text x="690" y="276" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">hypervisor: walls enforced by the hardware</text>
+  <text x="690" y="328" font-size="14" fill="#374151" text-anchor="middle">heavier: seconds to start, tens per machine</text>
+  <text x="690" y="349" font-size="14" font-weight="bold" fill="#15803d" text-anchor="middle">a problem in one house stays in that house</text>
+</svg>

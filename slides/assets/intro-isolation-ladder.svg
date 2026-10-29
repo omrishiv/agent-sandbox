@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <title>A ladder of isolation</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/></marker>
+  </defs>
+
+  <text x="460" y="28" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Each step up: stronger walls, slower start</text>
+
+  <rect x="30" y="250" width="200" height="75" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="130" y="278" font-size="15" font-weight="bold" fill="#111827" text-anchor="middle">Basic container</text>
+  <text x="130" y="298" font-size="13" fill="#374151" text-anchor="middle">shared foundation</text>
+  <text x="130" y="316" font-size="13" fill="#6b7280" text-anchor="middle">milliseconds</text>
+
+  <rect x="250" y="190" width="200" height="135" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+  <text x="350" y="220" font-size="15" font-weight="bold" fill="#15803d" text-anchor="middle">Hardened container</text>
+  <text x="350" y="242" font-size="13" fill="#374151" text-anchor="middle">locked doors, no keys,</text>
+  <text x="350" y="260" font-size="13" fill="#374151" text-anchor="middle">closed network</text>
+  <text x="350" y="282" font-size="13" fill="#6b7280" text-anchor="middle">milliseconds</text>
+  <text x="350" y="310" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">always do this</text>
+
+  <rect x="470" y="130" width="200" height="195" rx="8" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+  <text x="570" y="160" font-size="15" font-weight="bold" fill="#1e40af" text-anchor="middle">gVisor</text>
+  <text x="570" y="182" font-size="13" fill="#374151" text-anchor="middle">a stand-in foundation</text>
+  <text x="570" y="200" font-size="13" fill="#374151" text-anchor="middle">that screens every</text>
+  <text x="570" y="218" font-size="13" fill="#374151" text-anchor="middle">request</text>
+  <text x="570" y="240" font-size="13" fill="#6b7280" text-anchor="middle">about half a second</text>
+  <text x="570" y="268" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">good default for</text>
+  <text x="570" y="286" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">agent code</text>
+
+  <rect x="690" y="70" width="200" height="255" rx="8" fill="#faf5ff" stroke="#6b21a8" stroke-width="2"/>
+  <text x="790" y="100" font-size="15" font-weight="bold" fill="#6b21a8" text-anchor="middle">MicroVM</text>
+  <text x="790" y="120" font-size="13" fill="#6b21a8" text-anchor="middle">(Kata, Firecracker)</text>
+  <text x="790" y="146" font-size="13" fill="#374151" text-anchor="middle">a real, separate</text>
+  <text x="790" y="164" font-size="13" fill="#374151" text-anchor="middle">foundation per box</text>
+  <text x="790" y="186" font-size="13" fill="#6b7280" text-anchor="middle">a few seconds</text>
+  <text x="790" y="214" font-size="13" font-weight="bold" fill="#6b21a8" text-anchor="middle">hostile code,</text>
+  <text x="790" y="232" font-size="13" font-weight="bold" fill="#6b21a8" text-anchor="middle">many customers</text>
+  <text x="790" y="260" font-size="12" fill="#6b7280" text-anchor="middle">needs hardware</text>
+  <text x="790" y="276" font-size="12" fill="#6b7280" text-anchor="middle">virtualization (KVM)</text>
+
+  <line x1="40" y1="350" x2="885" y2="350" stroke="#374151" stroke-width="2.5" marker-end="url(#a)"/>
+  <text x="40" y="372" font-size="13" fill="#6b7280">faster, cheaper</text>
+  <text x="885" y="372" font-size="13" fill="#6b7280" text-anchor="end">stronger walls</text>
+</svg>

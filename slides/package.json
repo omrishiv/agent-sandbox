@@ -6,7 +6,9 @@
   "scripts": {
     "build:html": "npx -y @marp-team/marp-cli@^4 slides.md --theme-set themes/sandbox.css --html --allow-local-files -o slides.html",
     "build:pdf": "npx -y @marp-team/marp-cli@^4 slides.md --theme-set themes/sandbox.css --html --allow-local-files -o slides.pdf",
-    "preview": "npx -y @marp-team/marp-cli@^4 --theme-set themes/sandbox.css -s .",
+    "build:html:100": "npx -y @marp-team/marp-cli@^4 slides-100.md --theme-set themes/sandbox-light.css --html --allow-local-files -o slides-100.html",
+    "build:pdf:100": "npx -y @marp-team/marp-cli@^4 slides-100.md --theme-set themes/sandbox-light.css --html --allow-local-files -o slides-100.pdf",
+    "preview": "npx -y @marp-team/marp-cli@^4 --theme-set themes/sandbox.css themes/sandbox-light.css --html -s .",
     "build:diagrams": "for f in diagrams/*.mmd; do npx -y @mermaid-js/mermaid-cli@^11 -i \"$f\" -o \"assets/$(basename \"$f\" .mmd).svg\" -t neutral -b transparent; done"
   },
   "dependencies": {

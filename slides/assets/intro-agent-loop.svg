@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <title>The agent loop</title>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/></marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/></marker>
+  </defs>
+
+  <text x="330" y="30" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">An agent is a model in a loop</text>
+
+  <!-- Goal -->
+  <rect x="40" y="150" width="150" height="70" rx="8" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="115" y="180" font-size="16" font-weight="bold" fill="#111827" text-anchor="middle">Goal</text>
+  <text x="115" y="202" font-size="13" fill="#374151" text-anchor="middle">"fix this bug"</text>
+  <line x1="192" y1="185" x2="243" y2="110" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Model -->
+  <rect x="245" y="60" width="180" height="80" rx="8" fill="#eff6ff" stroke="#1e40af" stroke-width="1.5"/>
+  <text x="335" y="93" font-size="16" font-weight="bold" fill="#1e40af" text-anchor="middle">Model thinks</text>
+  <text x="335" y="116" font-size="13" fill="#374151" text-anchor="middle">writes code / picks a tool</text>
+
+  <!-- Run -->
+  <rect x="490" y="150" width="180" height="80" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="580" y="183" font-size="16" font-weight="bold" fill="#b91c1c" text-anchor="middle">Code runs</text>
+  <text x="580" y="206" font-size="13" fill="#374151" text-anchor="middle">files, network, shell</text>
+
+  <!-- Result -->
+  <rect x="245" y="245" width="180" height="80" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="335" y="278" font-size="16" font-weight="bold" fill="#111827" text-anchor="middle">Looks at result</text>
+  <text x="335" y="301" font-size="13" fill="#374151" text-anchor="middle">then tries again</text>
+
+  <path d="M 427 100 Q 540 100 570 148" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 570 232 Q 540 285 428 285" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M 300 243 Q 260 190 300 142" fill="none" stroke="#374151" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- Side note -->
+  <rect x="705" y="70" width="195" height="135" rx="8" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <text x="802" y="97" font-size="15" font-weight="bold" fill="#b91c1c" text-anchor="middle">Nobody reads this</text>
+  <text x="720" y="122" font-size="13" fill="#374151">The code is written and</text>
+  <text x="720" y="141" font-size="13" fill="#374151">run in seconds, again</text>
+  <text x="720" y="160" font-size="13" fill="#374151">and again. No human</text>
+  <text x="720" y="179" font-size="13" fill="#374151">reviews each step.</text>
+  <line x1="703" y1="170" x2="673" y2="185" stroke="#b91c1c" stroke-width="2" marker-end="url(#r)"/>
+
+  <text x="720" y="250" font-size="15" font-weight="bold" fill="#111827">The box it runs in</text>
+  <text x="720" y="272" font-size="13" fill="#374151">decides what that code</text>
+  <text x="720" y="291" font-size="13" fill="#374151">can touch.</text>
+</svg>

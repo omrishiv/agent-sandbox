@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="380" viewBox="0 0 920 380" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <title>Blast radius</title>
+
+  <text x="230" y="30" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Weak sandbox: big blast radius</text>
+  <text x="690" y="30" font-size="17" font-weight="bold" fill="#111827" text-anchor="middle">Good sandbox: small blast radius</text>
+
+  <!-- Left: rings all red -->
+  <circle cx="230" cy="205" r="160" fill="#fef2f2" stroke="#b91c1c" stroke-width="2"/>
+  <circle cx="230" cy="205" r="115" fill="#fee2e2" stroke="#b91c1c" stroke-width="2"/>
+  <circle cx="230" cy="205" r="70" fill="#fecaca" stroke="#b91c1c" stroke-width="2"/>
+  <circle cx="230" cy="205" r="30" fill="#b91c1c"/>
+  <text x="230" y="210" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">agent</text>
+  <text x="230" y="160" font-size="13" fill="#7f1d1d" text-anchor="middle">its box</text>
+  <text x="230" y="113" font-size="13" fill="#7f1d1d" text-anchor="middle">the machine</text>
+  <text x="230" y="67" font-size="13" fill="#7f1d1d" text-anchor="middle">the cluster + other teams</text>
+
+  <!-- Right: only inner ring touched -->
+  <circle cx="690" cy="205" r="160" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+  <circle cx="690" cy="205" r="115" fill="#ffffff" stroke="#d1d5db" stroke-width="2"/>
+  <circle cx="690" cy="205" r="70" fill="#f0fdf4" stroke="#15803d" stroke-width="3"/>
+  <circle cx="690" cy="205" r="30" fill="#b91c1c"/>
+  <text x="690" y="210" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">agent</text>
+  <text x="690" y="160" font-size="13" fill="#15803d" text-anchor="middle">its box</text>
+  <text x="690" y="113" font-size="13" fill="#6b7280" text-anchor="middle">the machine: safe</text>
+  <text x="690" y="67" font-size="13" fill="#6b7280" text-anchor="middle">the cluster + other teams: safe</text>
+</svg>
